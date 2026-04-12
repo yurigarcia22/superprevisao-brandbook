@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Super Previsao | Brand Book</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,400&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --orange:   #FF5C00;
+      --orange-lt:#FF8C42;
+      --yellow:   #FFD600;
+      --yellow-dk:#FFA000;
+      --gold:     #F0A500;
+      --gold-lt:  #FFD166;
+      --black:    #0D0D0D;
+      --black-2:  #111111;
+      --black-3:  #141414;
+      --grey-1:   #1A1A1A;
+      --grey-2:   #2A2A2A;
+      --grey-3:   #444444;
+      --grey-4:   #888888;
+      --white:    #FFFFFF;
+      --white-off:#F8F8F8;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--black); color: var(--white); }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(10,10,10,.95); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--grey-2);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; height: 56px;
+    }
+    nav .brand { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 18px; letter-spacing: 1px; color: var(--orange); text-transform: uppercase; }
+    nav ul { display: flex; gap: 32px; list-style: none; }
+    nav ul li a { font-size: 12px; font-weight: 500; color: var(--grey-4); text-decoration: none; letter-spacing: 1px; text-transform: uppercase; transition: color .2s; }
+    nav ul li a:hover { color: var(--white); }
+
+    /* ── COVER ── */
+    .cover {
+      min-height: 100vh; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; text-align: center;
+      padding: 120px 40px 80px;
+      background: radial-gradient(ellipse at 50% 0%, rgba(255,92,0,.12) 0%, transparent 60%),
+                  var(--black-2);
+      border-bottom: 1px solid var(--grey-2);
+    }
+    .cover .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 5px; text-transform: uppercase; color: var(--orange); margin-bottom: 24px; }
+    .cover h1 { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(72px, 12vw, 160px); text-transform: uppercase; line-height: .9; letter-spacing: -3px; }
+    .cover h1 em { font-style: normal; color: var(--orange); }
+    .cover .sub { font-size: 16px; color: var(--grey-4); margin-top: 28px; letter-spacing: 2px; }
+    .cover .meta-row { display: flex; gap: 56px; margin-top: 64px; flex-wrap: wrap; justify-content: center; }
+    .cover .meta-item .label { font-size: 10px; color: var(--grey-3); text-transform: uppercase; letter-spacing: 3px; }
+    .cover .meta-item .value { font-size: 14px; color: var(--grey-4); font-weight: 600; margin-top: 6px; }
+    .cover .version { position: absolute; bottom: 32px; font-size: 11px; color: var(--grey-3); letter-spacing: 2px; }
+
+    /* ── SECTIONS ── */
+    .section { max-width: 1120px; margin: 0 auto; padding: 100px 40px; }
+    .section + .section { border-top: 1px solid var(--grey-2); }
+    .sec-label { font-size: 11px; font-weight: 700; letter-spacing: 5px; text-transform: uppercase; color: var(--grey-3); margin-bottom: 12px; }
+    .sec-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(36px, 5vw, 64px); text-transform: uppercase; line-height: 1; margin-bottom: 48px; }
+    .sec-title em { font-style: normal; color: var(--orange); }
+    p.lead { font-size: 16px; color: var(--grey-4); line-height: 1.8; max-width: 640px; margin-bottom: 48px; }
+
+    /* ── LOGO PLACEHOLDER ── */
+    .logo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2px; }
+    .logo-card {
+      background: var(--grey-1); padding: 48px 32px;
+      display: flex; flex-direction: column; gap: 20px;
+    }
+    .logo-card .logo-placeholder {
+      background: var(--black-3); border: 1px dashed var(--grey-2);
+      border-radius: 8px; height: 240px;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 8px;
+    }
+    .logo-card .logo-placeholder .ph-icon { font-size: 40px; opacity: .2; }
+    .logo-card .logo-placeholder .ph-text { font-size: 11px; color: var(--grey-3); letter-spacing: 2px; text-transform: uppercase; }
+    .logo-card .logo-img {
+      width: 100%; height: 280px;
+      object-fit: contain; background: #080808;
+      border-radius: 8px; display: block;
+    }
+    .logo-card .logo-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 20px; text-transform: uppercase; letter-spacing: 1px; }
+    .logo-card .logo-desc { font-size: 13px; color: var(--grey-4); line-height: 1.6; }
+    .logo-card .logo-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 4px 10px; border-radius: 4px; }
+    .tag-orange { background: rgba(255,92,0,.15); color: var(--orange); }
+    .tag-yellow { background: rgba(255,214,0,.15); color: var(--yellow); }
+    .tag-gold   { background: rgba(240,165,0,.15); color: var(--gold); }
+
+    /* ── COLORS ── */
+    .palette-section { display: flex; flex-direction: column; gap: 40px; }
+    .palette-group-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 22px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; }
+    .swatches { display: flex; gap: 12px; flex-wrap: wrap; }
+    .swatch-card {
+      flex: 1; min-width: 160px;
+      border-radius: 12px; overflow: hidden;
+    }
+    .swatch-block { height: 120px; }
+    .swatch-info { background: var(--grey-1); padding: 16px; }
+    .swatch-name { font-size: 13px; font-weight: 600; color: var(--white); margin-bottom: 4px; }
+    .swatch-hex  { font-size: 12px; color: var(--grey-4); font-family: monospace; }
+    .swatch-role { font-size: 11px; color: var(--grey-3); margin-top: 4px; }
+
+    /* Neutral swatches */
+    .neutral-row { display: flex; gap: 4px; margin-top: 24px; }
+    .neutral-swatch { flex: 1; height: 56px; border-radius: 6px; display: flex; align-items: flex-end; padding: 6px 8px; }
+    .neutral-swatch span { font-size: 10px; font-family: monospace; }
+
+    /* Color usage */
+    .color-usage { margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .usage-card { background: var(--grey-1); border-radius: 10px; padding: 20px 24px; }
+    .usage-card .usage-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--grey-4); margin-bottom: 12px; }
+    .usage-card ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .usage-card ul li { font-size: 13px; color: var(--grey-4); display: flex; align-items: flex-start; gap: 8px; }
+    .usage-card ul li::before { content: '→'; color: var(--orange); flex-shrink: 0; font-weight: 700; }
+
+    /* ── TYPOGRAPHY ── */
+    .type-grid { display: flex; flex-direction: column; gap: 2px; }
+    .type-card { background: var(--grey-1); padding: 40px 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center; }
+    .type-preview { font-size: clamp(40px, 6vw, 80px); line-height: 1; }
+    .type-meta .type-name { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+    .type-meta .type-family { font-size: 13px; color: var(--orange); font-family: monospace; margin-bottom: 16px; }
+    .type-meta .type-desc { font-size: 13px; color: var(--grey-4); line-height: 1.7; }
+    .type-meta .type-weights { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+    .weight-tag { font-size: 11px; background: var(--grey-2); color: var(--grey-4); padding: 4px 10px; border-radius: 4px; }
+    .type-sample { grid-column: 1/-1; border-top: 1px solid var(--grey-2); padding-top: 24px; margin-top: 8px; }
+    .type-sample .sample-label { font-size: 10px; color: var(--grey-3); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 12px; }
+    .type-sample .abc { font-size: 15px; color: var(--grey-3); letter-spacing: 2px; line-height: 2; }
+
+    /* Type hierarchy */
+    .type-hierarchy { background: var(--grey-1); padding: 48px; margin-top: 2px; }
+    .type-hierarchy .hier-title { font-size: 11px; color: var(--grey-3); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 32px; }
+    .hier-row { display: flex; align-items: baseline; gap: 24px; padding: 20px 0; border-bottom: 1px solid var(--grey-2); }
+    .hier-row:last-child { border-bottom: none; }
+    .hier-label { font-size: 11px; color: var(--grey-3); width: 120px; flex-shrink: 0; text-transform: uppercase; letter-spacing: 2px; }
+    .hier-spec { font-size: 11px; color: var(--grey-3); width: 180px; flex-shrink: 0; font-family: monospace; }
+
+    /* ── VOICE & TONE ── */
+    .voice-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2px; margin-bottom: 40px; }
+    .voice-card { background: var(--grey-1); padding: 32px; }
+    .voice-card .vc-icon { font-size: 32px; margin-bottom: 16px; }
+    .voice-card .vc-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 22px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+    .voice-card .vc-desc { font-size: 13px; color: var(--grey-4); line-height: 1.7; }
+    .examples-block { background: var(--grey-1); padding: 40px 48px; }
+    .examples-block .ex-title { font-size: 11px; color: var(--grey-3); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 28px; }
+    .ex-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+    .ex-item { padding: 20px; border-radius: 8px; }
+    .ex-item.good { background: rgba(255,92,0,.08); border-left: 3px solid var(--orange); }
+    .ex-item.bad  { background: rgba(255,255,255,.03); border-left: 3px solid var(--grey-2); }
+    .ex-item .ex-tag { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+    .ex-item.good .ex-tag { color: var(--orange); }
+    .ex-item.bad  .ex-tag { color: var(--grey-3); }
+    .ex-item p { font-size: 14px; line-height: 1.6; }
+    .ex-item.good p { color: var(--white); }
+    .ex-item.bad  p { color: var(--grey-3); text-decoration: line-through; }
+
+    /* ── DO DONT ── */
+    .do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+    .do-card, .dont-card { padding: 40px 48px; }
+    .do-card { background: rgba(255,92,0,.06); }
+    .dont-card { background: var(--grey-1); }
+    .dd-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 28px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 24px; }
+    .do-card .dd-title { color: var(--orange); }
+    .dont-card .dd-title { color: var(--grey-3); }
+    .dd-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .dd-list li { font-size: 14px; color: var(--grey-4); line-height: 1.6; display: flex; gap: 12px; align-items: flex-start; }
+    .do-card .dd-list li::before { content: '✓'; color: var(--orange); font-weight: 700; flex-shrink: 0; }
+    .dont-card .dd-list li::before { content: '✗'; color: var(--grey-3); font-weight: 700; flex-shrink: 0; }
+
+    /* ── APPLICATIONS ── */
+    .app-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2px; }
+    .app-card { background: var(--grey-1); padding: 0; overflow: hidden; }
+    .app-preview {
+      height: 200px; display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 8px; position: relative; overflow: hidden;
+    }
+    .app-preview .app-label { font-size: 10px; color: rgba(255,255,255,.3); letter-spacing: 3px; text-transform: uppercase; }
+    .app-info { padding: 24px 28px; }
+    .app-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 20px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+    .app-spec { font-size: 12px; color: var(--grey-4); font-family: monospace; }
+
+    /* App mockups */
+    .mock-instagram { background: linear-gradient(135deg, #1a1a1a 0%, #111 100%); }
+    .mock-stories { background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%); }
+    .mock-ads { background: linear-gradient(135deg, #141414 0%, #1a1a1a 100%); }
+    .mock-website { background: #111; }
+    .mock-dark-bg { background: #0a0a0a; }
+    .mock-card {
+      background: var(--grey-1); border-radius: 12px; padding: 20px 24px;
+      width: 240px; border: 1px solid var(--grey-2);
+    }
+    .mock-card .mc-badge { font-size: 10px; color: var(--orange); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+    .mock-card .mc-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 28px; color: var(--white); text-transform: uppercase; line-height: 1; }
+    .mock-card .mc-sub { font-size: 12px; color: var(--grey-4); margin-top: 4px; }
+    .mock-card .mc-tag { margin-top: 16px; background: var(--orange); color: var(--white); font-size: 11px; font-weight: 700; padding: 6px 12px; border-radius: 6px; display: inline-block; }
+    .mock-insta-post {
+      width: 200px; height: 140px; background: var(--black-3);
+      border-radius: 8px; border: 1px solid var(--grey-2);
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 4px;
+    }
+    .mock-insta-post .mp-main { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 36px; color: var(--orange); text-transform: uppercase; line-height: 1; }
+    .mock-insta-post .mp-sub { font-size: 10px; color: var(--grey-4); letter-spacing: 2px; }
+
+    /* ── FOOTER ── */
+    footer { border-top: 1px solid var(--grey-2); padding: 40px; text-align: center; }
+    footer p { font-size: 12px; color: var(--grey-3); }
+    footer strong { color: var(--grey-4); }
+
+    @media (max-width: 768px) {
+      nav ul { display: none; }
+      .type-card { grid-template-columns: 1fr; }
+      .do-dont { grid-template-columns: 1fr; }
+      .ex-pair { grid-template-columns: 1fr; }
+      .color-usage { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="brand">Super Previsao</div>
+  <ul>
+    <li><a href="#logo">Logo</a></li>
+    <li><a href="#cores">Cores</a></li>
+    <li><a href="#tipografia">Tipografia</a></li>
+    <li><a href="#voz">Tom de Voz</a></li>
+    <li><a href="#aplicacoes">Aplicacoes</a></li>
+    <li><a href="#regras">Regras</a></li>
+  </ul>
+</nav>
+
+<!-- COVER -->
+<div class="cover" style="position:relative">
+  <div class="eyebrow">Brand Book | Versao 1.0</div>
+  <h1>SUPER<br><em>PREVISAO</em></h1>
+  <p class="sub">superprevisao.com &nbsp;|&nbsp; Identidade de Marca Completa</p>
+  <div class="meta-row">
+    <div class="meta-item"><div class="label">Versao</div><div class="value">1.0.0</div></div>
+    <div class="meta-item"><div class="label">Data</div><div class="value">Abril 2026</div></div>
+    <div class="meta-item"><div class="label">Criado por</div><div class="value">Grupo NG</div></div>
+    <div class="meta-item"><div class="label">Status</div><div class="value">Em Desenvolvimento</div></div>
+  </div>
+  <div class="version">CONFIDENCIAL | USO INTERNO</div>
+</div>
+
+<!-- LOGO SYSTEM -->
+<div id="logo" class="section">
+  <div class="sec-label">01 |  Sistema de Logo</div>
+  <div class="sec-title">Os <em>6 Conceitos</em><br>Selecionados</div>
+  <p class="lead">Seis conceitos de logo foram gerados e aprovados para a Super Previsao. Cada um traduz uma filosofia de marca diferente. O cliente escolhe o conceito final para refinamento profissional em vetor.</p>
+
+  <div class="logo-grid">
+
+    <div class="logo-card">
+      <img class="logo-img" src="imagens/fenix-grafico.png" alt="A Fenix do Grafico"/>
+      <div style="display:flex; align-items:center; justify-content:space-between">
+        <div class="logo-name" style="color:#F0A500">A Fenix do Grafico</div>
+        <span class="logo-tag tag-gold">Dourado + Preto</span>
+      </div>
+      <div class="logo-desc">Fenix dourada construida sobre colunas de grafico de barras ascendentes. As asas emergem dos dados. Cada barra e uma previsao confirmada, cada subida e um voo. O animal mais simbolico do mercado financeiro agora domina as apostas.</div>
+    </div>
+
+    <div class="logo-card">
+      <img class="logo-img" src="imagens/escudo-seta.png" alt="O Escudo da Previsao"/>
+      <div style="display:flex; align-items:center; justify-content:space-between">
+        <div class="logo-name" style="color:#F0A500">O Escudo da Previsao</div>
+        <span class="logo-tag tag-gold">Dourado + Preto</span>
+      </div>
+      <div class="logo-desc">Escudo geometrico com a letra S integrada a uma seta ascendente. Protecao e crescimento em um unico simbolo. O escudo defende o apostador do erro, a seta aponta para o lucro. Limpo, versatil, funciona em qualquer tamanho.</div>
+    </div>
+
+    <div class="logo-card">
+      <img class="logo-img" src="imagens/aguia-barras.png" alt="A Aguia das Barras"/>
+      <div style="display:flex; align-items:center; justify-content:space-between">
+        <div class="logo-name" style="color:#F0A500">A Aguia das Barras</div>
+        <span class="logo-tag tag-gold">Dourado + Preto</span>
+      </div>
+      <div class="logo-desc">Aguia geometrica com asas formadas por colunas de barras de diferentes alturas. O corpo do animal e o grafico em si. Predador de dados. Versao mais limpa e geometrica da ideia da fenix, com impacto visual imediato.</div>
+    </div>
+
+    <div class="logo-card">
+      <img class="logo-img" src="imagens/cavalo-xadrez.png" alt="O Xadrez Quebrado"/>
+      <div style="display:flex; align-items:center; justify-content:space-between">
+        <div class="logo-name" style="color:#FFD600">O Xadrez Quebrado</div>
+        <span class="logo-tag tag-yellow">Amarelo + Preto</span>
+      </div>
+      <div class="logo-desc">Cavalo de xadrez dourado se levantando sobre um tabuleiro que se fragmenta. As pecas explodem ao redor, o cavalo permanece intacto. A previsao certa quebra todos os padroes do jogo. Unico logo amarelo da selecao, maximo impacto visual.</div>
+    </div>
+
+    <div class="logo-card">
+      <img class="logo-img" src="imagens/coruja-analitica.png" alt="A Coruja Analitica"/>
+      <div style="display:flex; align-items:center; justify-content:space-between">
+        <div class="logo-name" style="color:#F0A500">A Coruja Analitica</div>
+        <span class="logo-tag tag-gold">Dourado + Preto</span>
+      </div>
+      <div class="logo-desc">Coruja detalhada com olhos substituidos por grafico de pizza e mira de precisao. Bracos cruzados, expressao de quem ja sabe o resultado. O mascote mais memoravel da selecao. Ideal para redes sociais, perfil, avatar e materiais de conteudo.</div>
+    </div>
+
+    <div class="logo-card">
+      <img class="logo-img" src="imagens/falcao-laranja.png" alt="O Falcao"/>
+      <div style="display:flex; align-items:center; justify-content:space-between">
+        <div class="logo-name" style="color:#FF5C00">O Falcao</div>
+        <span class="logo-tag tag-orange">Laranja + Preto</span>
+      </div>
+      <div class="logo-desc">Falcao geometrico em perfil com mira de sniper no olho. O unico conceito em laranja da selecao. Agressivo, preciso, impossivel de ignorar. O falcao ve o que os outros nao veem antes do jogo comecar. Diferenciacao total no mercado.</div>
+    </div>
+
+  </div>
+
+  <!-- Logo usage rules -->
+  <div style="background:var(--grey-1); padding:48px; margin-top:2px">
+    <div class="sec-label" style="margin-bottom:32px">Regras de Uso do Logo</div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:24px">
+      <div>
+        <div style="font-size:12px;color:var(--grey-3);text-transform:uppercase;letter-spacing:2px;margin-bottom:12px">Area de Protecao</div>
+        <p style="font-size:13px;color:var(--grey-4);line-height:1.7">Mantenha ao redor do logo um espaco livre equivalente a altura da letra "S" do wordmark. Nenhum elemento pode invadir essa area.</p>
+      </div>
+      <div>
+        <div style="font-size:12px;color:var(--grey-3);text-transform:uppercase;letter-spacing:2px;margin-bottom:12px">Tamanho Minimo</div>
+        <p style="font-size:13px;color:var(--grey-4);line-height:1.7">Digital: 120px de largura minima. Impresso: 25mm de largura minima. Abaixo disso, usar apenas o icone sem wordmark.</p>
+      </div>
+      <div>
+        <div style="font-size:12px;color:var(--grey-3);text-transform:uppercase;letter-spacing:2px;margin-bottom:12px">Versoes Permitidas</div>
+        <p style="font-size:13px;color:var(--grey-4);line-height:1.7">Primaria (cor sobre preto) | Monocromatica branca | Monocromatica preta | Icone solo. Nunca alterar proporcoes ou cores.</p>
+      </div>
+      <div>
+        <div style="font-size:12px;color:var(--grey-3);text-transform:uppercase;letter-spacing:2px;margin-bottom:12px">Fundos Permitidos</div>
+        <p style="font-size:13px;color:var(--grey-4);line-height:1.7">Preto (#0D0D0D, #111111, #141414), Branco (#FFFFFF), Cinza escuro (#1A1A1A). Nunca sobre fotos sem overlay escuro.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CORES -->
+<div id="cores" class="section">
+  <div class="sec-label">02 | Sistema de Cores</div>
+  <div class="sec-title">Paletas de<br><em>Identidade</em></div>
+  <p class="lead">Tres paletas foram desenvolvidas, cada uma com personalidade propria. Uma sera selecionada como paleta oficial apos aprovacao do logo.</p>
+
+  <div class="palette-section">
+
+    <!-- Paleta 1 -->
+    <div>
+      <div class="palette-group-title" style="color:var(--orange)">Paleta 01 | Laranja + Preto <span style="font-size:14px;color:var(--grey-3);font-weight:400">(Recomendada)</span></div>
+      <div class="swatches">
+        <div class="swatch-card">
+          <div class="swatch-block" style="background:#FF5C00"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Laranja Fogo</div>
+            <div class="swatch-hex">#FF5C00</div>
+            <div class="swatch-role">Primaria | CTA, destaques, logo</div>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-block" style="background:#111111"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Preto Profundo</div>
+            <div class="swatch-hex">#111111</div>
+            <div class="swatch-role">Fundo principal</div>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-block" style="background:#FF8C42"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Laranja Claro</div>
+            <div class="swatch-hex">#FF8C42</div>
+            <div class="swatch-role">Acento | hover, gradientes</div>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-block" style="background:#FFFFFF; border:1px solid #222"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Branco</div>
+            <div class="swatch-hex">#FFFFFF</div>
+            <div class="swatch-role">Textos sobre fundo escuro</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paleta 2 -->
+    <div>
+      <div class="palette-group-title" style="color:var(--yellow)">Paleta 02 | Amarelo + Preto</div>
+      <div class="swatches">
+        <div class="swatch-card">
+          <div class="swatch-block" style="background:#FFD600"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Amarelo Eletrico</div>
+            <div class="swatch-hex">#FFD600</div>
+            <div class="swatch-role">Primaria | logo, CTA, destaques</div>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-block" style="background:#0D0D0D"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Preto Absoluto</div>
+            <div class="swatch-hex">#0D0D0D</div>
+            <div class="swatch-role">Fundo principal</div>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-block" style="background:#FFA000"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Amarelo Ouro</div>
+            <div class="swatch-hex">#FFA000</div>
+            <div class="swatch-role">Acento | icones, bordas</div>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-block" style="background:#FFFFFF; border:1px solid #222"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Branco</div>
+            <div class="swatch-hex">#FFFFFF</div>
+            <div class="swatch-role">Textos sobre fundo escuro</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paleta 3 -->
+    <div>
+      <div class="palette-group-title" style="color:var(--gold)">Paleta 03 | Dourado + Preto</div>
+      <div class="swatches">
+        <div class="swatch-card">
+          <div class="swatch-block" style="background:#F0A500"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Dourado Metalico</div>
+            <div class="swatch-hex">#F0A500</div>
+            <div class="swatch-role">Primaria | logo, destaques</div>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-block" style="background:#141414"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Preto Grafite</div>
+            <div class="swatch-hex">#141414</div>
+            <div class="swatch-role">Fundo principal</div>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-block" style="background:#FFD166"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Ouro Claro</div>
+            <div class="swatch-hex">#FFD166</div>
+            <div class="swatch-role">Acento | hover, gradientes suaves</div>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-block" style="background:#F8F8F8; border:1px solid #222"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Branco Off</div>
+            <div class="swatch-hex">#F8F8F8</div>
+            <div class="swatch-role">Textos principais</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Neutros compartilhados -->
+    <div>
+      <div class="palette-group-title" style="color:var(--grey-4)">Neutros | Compartilhados pelas 3 Paletas</div>
+      <div class="neutral-row">
+        <div class="neutral-swatch" style="background:#1A1A1A"><span style="color:#444">#1A1A1A</span></div>
+        <div class="neutral-swatch" style="background:#2A2A2A"><span style="color:#555">#2A2A2A</span></div>
+        <div class="neutral-swatch" style="background:#444444"><span style="color:#666">#444444</span></div>
+        <div class="neutral-swatch" style="background:#666666"><span style="color:#888">#666666</span></div>
+        <div class="neutral-swatch" style="background:#888888"><span style="color:#aaa">#888888</span></div>
+        <div class="neutral-swatch" style="background:#CCCCCC"><span style="color:#999">#CCCCCC</span></div>
+        <div class="neutral-swatch" style="background:#F0F0F0"><span style="color:#aaa">#F0F0F0</span></div>
+      </div>
+    </div>
+
+    <!-- Color usage -->
+    <div class="color-usage">
+      <div class="usage-card">
+        <div class="usage-title">Cor Primaria | Quando Usar</div>
+        <ul>
+          <li>Botoes de CTA (call-to-action)</li>
+          <li>Logo e icones principais</li>
+          <li>Titulos em destaque</li>
+          <li>Bordas e elementos de enfase</li>
+          <li>Badges e etiquetas de status</li>
+          <li>Links e elementos interativos</li>
+        </ul>
+      </div>
+      <div class="usage-card">
+        <div class="usage-title">Cor Primaria | Quando NAO Usar</div>
+        <ul>
+          <li>Textos corridos de corpo</li>
+          <li>Fundos de paginas inteiras</li>
+          <li>Mais de 20% da composicao</li>
+          <li>Sobre outros tons fortes</li>
+          <li>Nunca com opacidade reduzida no logo</li>
+          <li>Nunca sobre branco (baixo contraste)</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- TIPOGRAFIA -->
+<div id="tipografia" class="section">
+  <div class="sec-label">03 | Tipografia</div>
+  <div class="sec-title">Sistema<br><em>Tipografico</em></div>
+  <p class="lead">Tres familias tipograficas formam o sistema. Cada uma com um papel especifico | impacto, funcionalidade ou personalidade. Todas disponiveis gratuitamente no Google Fonts.</p>
+
+  <div class="type-grid">
+
+    <!-- Font 1 -->
+    <div class="type-card">
+      <div class="type-preview" style="font-family:'Barlow Condensed',sans-serif;font-weight:900;text-transform:uppercase;color:var(--orange)">
+        TITULO<br>IMPACTO
+      </div>
+      <div class="type-meta">
+        <div class="type-name">Barlow Condensed</div>
+        <div class="type-family">fonts.google.com/barlow-condensed</div>
+        <div class="type-desc">A fonte de titulos e display da marca. Condensada, poderosa, impossivel de ignorar. Usada no logo, headlines, chamadas de campanha e qualquer texto que precisa dominar o espaco.</div>
+        <div class="type-weights">
+          <span class="weight-tag">ExtraBold 800</span>
+          <span class="weight-tag">Black 900</span>
+          <span class="weight-tag">Bold 700</span>
+          <span class="weight-tag">SemiBold 600</span>
+        </div>
+      </div>
+      <div class="type-sample">
+        <div class="sample-label">Alfabeto Completo</div>
+        <div class="abc" style="font-family:'Barlow Condensed',sans-serif;font-weight:900;text-transform:uppercase">
+          A B C D E F G H I J K L M N O P Q R S T U V W X Y Z<br>
+          0 1 2 3 4 5 6 7 8 9
+        </div>
+      </div>
+    </div>
+
+    <!-- Font 2 -->
+    <div class="type-card">
+      <div class="type-preview" style="font-family:'Inter',sans-serif;font-weight:400;color:var(--white-off)">
+        Texto<br>legivel
+      </div>
+      <div class="type-meta">
+        <div class="type-name">Inter</div>
+        <div class="type-family">fonts.google.com/inter</div>
+        <div class="type-desc">A fonte funcional da marca. Projetada especificamente para leitura em telas. Usada em paragrafos, descricoes, UI de produto, legendas e qualquer texto de corpo. Maxima legibilidade em qualquer tamanho.</div>
+        <div class="type-weights">
+          <span class="weight-tag">Regular 400</span>
+          <span class="weight-tag">Medium 500</span>
+          <span class="weight-tag">SemiBold 600</span>
+          <span class="weight-tag">Bold 700</span>
+        </div>
+      </div>
+      <div class="type-sample">
+        <div class="sample-label">Alfabeto Completo</div>
+        <div class="abc" style="font-family:'Inter',sans-serif;font-weight:400">
+          a b c d e f g h i j k l m n o p q r s t u v w x y z<br>
+          A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+        </div>
+      </div>
+    </div>
+
+    <!-- Font 3 -->
+    <div class="type-card">
+      <div class="type-preview" style="font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--grey-4)">
+        Dados<br>Odds
+      </div>
+      <div class="type-meta">
+        <div class="type-name">Space Grotesk</div>
+        <div class="type-family">fonts.google.com/space-grotesk</div>
+        <div class="type-desc">A fonte tecnica da marca. Personalidade propria, levemente monoespaco, perfeita para exibir odds, estatisticas, numeros de previsoes e qualquer dado numerico que precisa de carater tech.</div>
+        <div class="type-weights">
+          <span class="weight-tag">Regular 400</span>
+          <span class="weight-tag">Medium 500</span>
+          <span class="weight-tag">Bold 700</span>
+        </div>
+      </div>
+      <div class="type-sample">
+        <div class="sample-label">Numeros e Dados</div>
+        <div class="abc" style="font-family:'Space Grotesk',sans-serif;font-weight:500">
+          0 1 2 3 4 5 6 7 8 9 &nbsp; 1.85 &nbsp; 2.40 &nbsp; 3.75<br>
+          ODDS &nbsp; ACERTO &nbsp; PREVISAO &nbsp; WIN%
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Hierarquia tipografica -->
+  <div class="type-hierarchy">
+    <div class="hier-title">Hierarquia Tipografica | Guia de Aplicacao</div>
+
+    <div class="hier-row">
+      <div class="hier-label">Display / Hero</div>
+      <div class="hier-spec">Barlow Condensed 900</div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:48px;text-transform:uppercase;color:var(--orange)">SUPER PREVISAO</div>
+    </div>
+    <div class="hier-row">
+      <div class="hier-label">H1 Titulo</div>
+      <div class="hier-spec">Barlow Condensed 800</div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:36px;text-transform:uppercase">Melhores Previsoes</div>
+    </div>
+    <div class="hier-row">
+      <div class="hier-label">H2 Subtitulo</div>
+      <div class="hier-spec">Barlow Condensed 700</div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:26px;text-transform:uppercase;color:var(--grey-4)">Jogos de Hoje | Brasileirao</div>
+    </div>
+    <div class="hier-row">
+      <div class="hier-label">H3 Secao</div>
+      <div class="hier-spec">Inter SemiBold 600</div>
+      <div style="font-family:'Inter',sans-serif;font-weight:600;font-size:18px;color:var(--white)">Analise do Confronto</div>
+    </div>
+    <div class="hier-row">
+      <div class="hier-label">Body / Paragrafo</div>
+      <div class="hier-spec">Inter Regular 400</div>
+      <div style="font-family:'Inter',sans-serif;font-weight:400;font-size:15px;color:var(--grey-4);line-height:1.7">A analise aponta vantagem para o time da casa considerando os ultimos 5 confrontos diretos e o desempenho como mandante nesta temporada.</div>
+    </div>
+    <div class="hier-row">
+      <div class="hier-label">Dados / Odds</div>
+      <div class="hier-spec">Space Grotesk 700</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:28px;color:var(--orange)">1.85 &nbsp; 3.20 &nbsp; 2.40</div>
+    </div>
+    <div class="hier-row">
+      <div class="hier-label">Label / Badge</div>
+      <div class="hier-spec">Inter Bold 700 • uppercase</div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <span style="font-family:'Inter',sans-serif;font-weight:700;font-size:11px;letter-spacing:2px;text-transform:uppercase;background:var(--orange);color:#fff;padding:4px 10px;border-radius:4px">AO VIVO</span>
+        <span style="font-family:'Inter',sans-serif;font-weight:700;font-size:11px;letter-spacing:2px;text-transform:uppercase;background:var(--grey-1);color:var(--grey-4);padding:4px 10px;border-radius:4px">HOJE</span>
+        <span style="font-family:'Inter',sans-serif;font-weight:700;font-size:11px;letter-spacing:2px;text-transform:uppercase;background:rgba(255,92,0,.15);color:var(--orange);padding:4px 10px;border-radius:4px">DESTAQUE</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- TOM DE VOZ -->
+<div id="voz" class="section">
+  <div class="sec-label">04 | Tom de Voz e Personalidade</div>
+  <div class="sec-title">Como a Marca<br><em>Fala</em></div>
+  <p class="lead">A Super Previsao nao e uma enciclopedia de dados. E o cara que sabe o que vai acontecer antes de todo mundo | e fala isso com confianca.</p>
+
+  <div class="voice-grid">
+    <div class="voice-card">
+      <div class="vc-icon">⚡</div>
+      <div class="vc-title" style="color:var(--orange)">Confiante</div>
+      <div class="vc-desc">Nao ha duvidas no vocabulario da marca. Afirmacoes, nao sugestoes. "Vai ser" em vez de "pode ser". O apostador quer certeza | a marca entrega.</div>
+    </div>
+    <div class="voice-card">
+      <div class="vc-icon">🎯</div>
+      <div class="vc-title" style="color:var(--orange)">Direto</div>
+      <div class="vc-desc">Zero rodeios. A previsao vem primeiro, a explicacao vem depois (e e curta). Textos curtos, frases de impacto. O usuario le em segundos, decide em segundos.</div>
+    </div>
+    <div class="voice-card">
+      <div class="vc-icon">🔥</div>
+      <div class="vc-title" style="color:var(--orange)">Energetico</div>
+      <div class="vc-desc">Urgencia saudavel. Toda previsao tem um prazo. Toda oportunidade some. A marca carrega essa energia sem ser agressiva | empolgante, nao pressao.</div>
+    </div>
+    <div class="voice-card">
+      <div class="vc-icon">🧠</div>
+      <div class="vc-title" style="color:var(--orange)">Inteligente</div>
+      <div class="vc-desc">Sabe de dados mas nao exibe. Cita numeros quando reforçam a previsao, nao para parecer esperto. A inteligencia aparece no resultado, nao no jargao.</div>
+    </div>
+  </div>
+
+  <div class="examples-block">
+    <div class="ex-title">Exemplos de Tom | Certo vs Errado</div>
+
+    <div class="ex-pair">
+      <div class="ex-item good">
+        <div class="ex-tag">Certo</div>
+        <p>"Flamengo ganha hoje. 87% de acerto nos ultimos 12 jogos como mandante."</p>
+      </div>
+      <div class="ex-item bad">
+        <div class="ex-tag">Evitar</div>
+        <p>"Acreditamos que possivelmente o Flamengo pode ter uma boa performance considerando os indices historicos."</p>
+      </div>
+    </div>
+
+    <div class="ex-pair">
+      <div class="ex-item good">
+        <div class="ex-tag">Certo</div>
+        <p>"Essa odd nao vai durar. Previsao confirmada para hoje as 21h."</p>
+      </div>
+      <div class="ex-item bad">
+        <div class="ex-tag">Evitar</div>
+        <p>"Aproveite esta oportunidade de odds que pode ser interessante para diversas apostas esportivas."</p>
+      </div>
+    </div>
+
+    <div class="ex-pair">
+      <div class="ex-item good">
+        <div class="ex-tag">Certo</div>
+        <p>"3 de 4 previsoes de ontem: certeiras. Confere ai."</p>
+      </div>
+      <div class="ex-item bad">
+        <div class="ex-tag">Evitar</div>
+        <p>"Nossos tipsters trabalham arduamente para fornecer as melhores dicas de apostas esportivas do mercado."</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- APLICACOES -->
+<div id="aplicacoes" class="section">
+  <div class="sec-label">05 | Aplicacoes de Marca</div>
+  <div class="sec-title">A Marca<br><em>em Uso</em></div>
+  <p class="lead">Como a identidade se comporta nos principais pontos de contato com o publico.</p>
+
+  <div class="app-grid">
+
+    <div class="app-card">
+      <div class="app-preview mock-instagram">
+        <div class="mock-insta-post">
+          <div class="mp-main" style="font-family:'Barlow Condensed',sans-serif">PREVISAO</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:18px;color:#FF5C00">FLAMENGO 2x0</div>
+          <div class="mp-sub">superprevisao.com</div>
+        </div>
+      </div>
+      <div class="app-info">
+        <div class="app-name">Post Instagram | Feed</div>
+        <div class="app-spec">1080 x 1080px &nbsp;|&nbsp; JPG/PNG &nbsp;|&nbsp; 72dpi</div>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-preview mock-stories">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+          <div style="font-size:10px;color:var(--grey-3);letter-spacing:2px;text-transform:uppercase">Stories</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:42px;color:var(--yellow);text-transform:uppercase;line-height:1">ACERTEI<br>DE NOVO</div>
+          <div style="font-size:11px;color:var(--grey-4)">superprevisao.com</div>
+        </div>
+      </div>
+      <div class="app-info">
+        <div class="app-name">Stories Instagram</div>
+        <div class="app-spec">1080 x 1920px &nbsp;|&nbsp; JPG/PNG/MP4 &nbsp;|&nbsp; 72dpi</div>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-preview mock-ads">
+        <div class="mock-card">
+          <div class="mc-badge">Previsao do Dia</div>
+          <div class="mc-title" style="font-family:'Barlow Condensed',sans-serif">PALMEIRAS<br>VENCE</div>
+          <div class="mc-sub">Odd: 1.85 &nbsp;|&nbsp; Hoje 19h</div>
+          <div class="mc-tag">Ver Analise</div>
+        </div>
+      </div>
+      <div class="app-info">
+        <div class="app-name">Banner Meta Ads</div>
+        <div class="app-spec">1200 x 628px &nbsp;|&nbsp; JPG/PNG &nbsp;|&nbsp; 72dpi</div>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-preview mock-website">
+        <div style="width:260px;background:var(--grey-1);border-radius:8px;overflow:hidden;border:1px solid var(--grey-2)">
+          <div style="height:6px;background:var(--orange)"></div>
+          <div style="padding:16px">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:14px;color:var(--orange);text-transform:uppercase">Super Previsao</div>
+            <div style="display:flex;gap:12px;margin-top:10px">
+              <div style="flex:1;background:var(--black-3);border-radius:4px;height:24px"></div>
+              <div style="flex:1;background:var(--black-3);border-radius:4px;height:24px"></div>
+              <div style="flex:1;background:var(--black-3);border-radius:4px;height:24px"></div>
+            </div>
+            <div style="margin-top:10px;background:var(--black-3);border-radius:4px;height:60px;display:flex;align-items:center;justify-content:center">
+              <span style="font-size:10px;color:var(--grey-3)">Hero Section</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="app-info">
+        <div class="app-name">Website | Header</div>
+        <div class="app-spec">Responsivo &nbsp;|&nbsp; Desktop + Mobile &nbsp;|&nbsp; Dark mode</div>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-preview mock-dark-bg">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+          <div style="width:60px;height:60px;background:var(--orange);border-radius:16px;display:flex;align-items:center;justify-content:center">
+            <span style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:28px;color:white">SP</span>
+          </div>
+          <div style="font-size:10px;color:var(--grey-4);letter-spacing:1px">SUPER PREVISAO</div>
+        </div>
+      </div>
+      <div class="app-info">
+        <div class="app-name">Icone de App</div>
+        <div class="app-spec">1024 x 1024px &nbsp;|&nbsp; PNG &nbsp;|&nbsp; iOS + Android</div>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-preview mock-instagram" style="background:#1a1200">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+          <div style="font-size:10px;color:var(--grey-3);letter-spacing:2px">WhatsApp / Telegram</div>
+          <div style="background:var(--grey-1);border-radius:12px;padding:16px 20px;max-width:200px">
+            <div style="font-size:10px;color:var(--orange);font-weight:700;margin-bottom:6px">SUPER PREVISAO</div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:18px;color:white">BRASIL 2x1<br>ARGENTINA</div>
+            <div style="font-size:11px;color:var(--grey-4);margin-top:4px">Previsao confirmada ✓</div>
+          </div>
+        </div>
+      </div>
+      <div class="app-info">
+        <div class="app-name">Mensagens / Grupos</div>
+        <div class="app-spec">Card compartilhavel &nbsp;|&nbsp; PNG &nbsp;|&nbsp; 1:1 ou 16:9</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- REGRAS DO/DON'T -->
+<div id="regras" class="section">
+  <div class="sec-label">06 | Regras da Marca</div>
+  <div class="sec-title">O Que Fazer e<br><em>O Que Evitar</em></div>
+
+  <div class="do-dont">
+    <div class="do-card">
+      <div class="dd-title">Faca</div>
+      <ul class="dd-list">
+        <li>Use sempre o logo na versao original aprovada</li>
+        <li>Mantenha o alto contraste entre primaria e fundo</li>
+        <li>Use Barlow Condensed em titulos com caixa alta</li>
+        <li>Mantenha espacos de respiro ao redor do logo</li>
+        <li>Use as cores primarias em no maximo 20% do layout</li>
+        <li>Priorize fundo preto ou muito escuro em todas as pecas</li>
+        <li>Use a paleta de neutros para textos de corpo</li>
+        <li>Mantenha o tom direto e confiante em todos os textos</li>
+        <li>Use icones geometricos e de linhas finas para suporte</li>
+        <li>Aplique a fonte Space Grotesk para dados e odds</li>
+      </ul>
+    </div>
+    <div class="dont-card">
+      <div class="dd-title">Nao Faca</div>
+      <ul class="dd-list">
+        <li>Nunca distorça, rotacione ou altere proporcoes do logo</li>
+        <li>Nunca use o logo sobre fundos coloridos ou fotos</li>
+        <li>Nunca use gradientes na cor primaria do logo</li>
+        <li>Nunca misture as 3 paletas numa mesma peca</li>
+        <li>Nunca use fontes que nao sejam as do sistema de marca</li>
+        <li>Nunca coloque texto branco sobre laranja/amarelo/dourado</li>
+        <li>Nunca use sombras, brilhos ou efeitos 3D no logo</li>
+        <li>Nunca reduza o logo abaixo do tamanho minimo</li>
+        <li>Nunca use tom hesitante ou incerto nos textos</li>
+        <li>Nunca use fundo branco como fundo principal de pecas</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>Preparado por <strong>Grupo NG</strong> | Marketing Digital, Trafego e Criativos</p>
+  <p style="margin-top:8px">Super Previsao | Brand Book v1.0 &nbsp;|&nbsp; Abril 2026 &nbsp;|&nbsp; Confidencial</p>
+  <p style="margin-top:8px;font-size:11px">Os espacos de logo serao preenchidos apos geracao e aprovacao das imagens no Gemini</p>
+</footer>
+
+</body>
+</html>
