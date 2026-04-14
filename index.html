@@ -105,16 +105,14 @@ nav.topnav{
 .cover{
   position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;
   padding:120px 0 80px;overflow:hidden;
-  background:url('imagens/hero-bg.jpg') center center / cover no-repeat;
 }
 .cover::before{
   content:"";position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(135deg, rgba(13,13,13,.85) 0%, rgba(13,13,13,.6) 50%, rgba(13,13,13,.75) 100%),
-             radial-gradient(ellipse at 78% 18%, var(--color-gold-glow) 0%, transparent 55%);
+  background:radial-gradient(ellipse at 78% 18%, var(--color-gold-glow) 0%, transparent 55%);
 }
 .cover::after{
   content:"";position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(ellipse at center, transparent 35%, rgba(0,0,0,.5) 100%);
+  background:radial-gradient(ellipse at center, transparent 35%, rgba(0,0,0,.6) 100%);
 }
 .cover__inner{position:relative;z-index:2;display:grid;grid-template-columns:1.3fr .9fr;gap:var(--space-16);align-items:center;width:100%}
 .cover__text .eyebrow{margin-bottom:var(--space-6)}
@@ -395,6 +393,10 @@ nav.topnav{
 .merch-item{background:var(--grey-2);border-radius:var(--radius-md);padding:var(--space-6);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-3);min-height:200px;border:1px solid var(--border-subtle)}
 .merch-item .merch-icon{font-family:var(--font-display);font-weight:800;color:var(--color-gold);font-size:40px;letter-spacing:-.03em}
 .merch-item .merch-label{font-family:var(--font-body);font-weight:500;font-size:11px;color:var(--grey-7);letter-spacing:.08em;text-transform:uppercase}
+.merch-item--photo{padding:0;overflow:hidden;min-height:180px}
+.merch-item--photo img{width:100%;height:200px;object-fit:cover;display:block;transition:transform .4s var(--ease-out)}
+.merch-item--photo:hover img{transform:scale(1.04)}
+.merch-item--photo .merch-label{padding:var(--space-3) var(--space-4)}
 
 /* ==================== DO DONT ==================== */
 .dodont-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-6)}
@@ -1039,10 +1041,10 @@ footer.site-foot .foot-meta{display:flex;gap:var(--space-6);color:var(--grey-6);
       <div class="app-card big reveal">
         <div class="app-stage">
           <div class="mock-merch">
-            <div class="merch-item"><div class="merch-icon">SP</div><div class="merch-label">Camiseta Preta</div></div>
-            <div class="merch-item"><div class="merch-icon">★</div><div class="merch-label">Boné Ouro</div></div>
-            <div class="merch-item"><div class="merch-icon">01</div><div class="merch-label">Caderno Grid</div></div>
-            <div class="merch-item"><div class="merch-icon">→</div><div class="merch-label">Adesivo Oficial</div></div>
+            <div class="merch-item merch-item--photo"><img src="imagens/merch-camiseta.jpg" alt="Camiseta Preta Super Previsão" loading="lazy"/><div class="merch-label">Camiseta Preta</div></div>
+            <div class="merch-item merch-item--photo"><img src="imagens/merch-bone.jpg" alt="Boné Ouro Super Previsão" loading="lazy"/><div class="merch-label">Boné Ouro</div></div>
+            <div class="merch-item merch-item--photo"><img src="imagens/merch-caderno.jpg" alt="Caderno Grid Super Previsão" loading="lazy"/><div class="merch-label">Caderno Grid</div></div>
+            <div class="merch-item merch-item--photo"><img src="imagens/merch-adesivo.jpg" alt="Adesivo Oficial Super Previsão" loading="lazy"/><div class="merch-label">Adesivo Oficial</div></div>
           </div>
         </div>
         <div class="app-info"><div class="t-label a-label">Físico</div><div class="a-name">Merchandise</div><div class="a-spec">Camiseta · Boné · Caderno · Adesivo</div></div>
