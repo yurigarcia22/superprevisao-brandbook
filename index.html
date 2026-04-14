@@ -62,7 +62,10 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 /* ==================== LAYOUT ==================== */
 .container{width:100%;max-width:1440px;margin-inline:auto;padding-inline:clamp(20px,4vw,64px)}
 .container--narrow{max-width:960px}
-.section{padding:var(--space-32) 0 var(--space-40)}
+.section{padding:var(--space-32) 0 var(--space-40);position:relative}
+.section--pattern{background:url('imagens/pattern-hex.png') repeat;background-size:220px}
+.section--pattern::before{content:"";position:absolute;inset:0;background:rgba(13,13,13,.93);pointer-events:none}
+.section--pattern>.container{position:relative;z-index:1}
 .section:first-of-type{padding-top:0}
 
 /* ==================== TYPE ==================== */
@@ -102,14 +105,16 @@ nav.topnav{
 .cover{
   position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;
   padding:120px 0 80px;overflow:hidden;
+  background:url('imagens/hero-bg.jpg') center center / cover no-repeat;
 }
 .cover::before{
   content:"";position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(ellipse at 78% 18%, var(--color-gold-glow) 0%, transparent 55%);
+  background:linear-gradient(135deg, rgba(13,13,13,.85) 0%, rgba(13,13,13,.6) 50%, rgba(13,13,13,.75) 100%),
+             radial-gradient(ellipse at 78% 18%, var(--color-gold-glow) 0%, transparent 55%);
 }
 .cover::after{
   content:"";position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(ellipse at center, transparent 35%, rgba(0,0,0,.6) 100%);
+  background:radial-gradient(ellipse at center, transparent 35%, rgba(0,0,0,.5) 100%);
 }
 .cover__inner{position:relative;z-index:2;display:grid;grid-template-columns:1.3fr .9fr;gap:var(--space-16);align-items:center;width:100%}
 .cover__text .eyebrow{margin-bottom:var(--space-6)}
@@ -145,7 +150,9 @@ nav.topnav{
 .sec-lead{max-width:720px;margin-bottom:var(--space-16)}
 
 /* ==================== MANIFESTO ==================== */
-.manifesto{padding:var(--space-32) 0;position:relative}
+.manifesto{padding:var(--space-32) 0;position:relative;background:url('imagens/textura-dark.jpg') center center / cover no-repeat}
+.manifesto::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--color-black) 0%,rgba(13,13,13,.82) 50%,var(--color-black) 100%);pointer-events:none}
+.manifesto>.container{position:relative;z-index:1}
 .manifesto__headline{font-family:var(--font-display);font-weight:800;font-size:clamp(40px,6vw,88px);line-height:.98;letter-spacing:-.015em;text-transform:uppercase;color:var(--color-gold);margin-bottom:var(--space-10);max-width:1000px}
 .manifesto__body{font-family:var(--font-body);font-weight:300;font-size:clamp(19px,1.6vw,24px);line-height:1.6;color:var(--grey-9);max-width:820px}
 .manifesto__body em{font-style:normal;color:var(--color-gold)}
@@ -309,6 +316,7 @@ nav.topnav{
 .imagery-col.no li::before{content:"";position:absolute;left:0;top:10px;width:14px;height:1px;background:var(--color-danger)}
 
 /* ==================== APPLICATIONS ==================== */
+.app-hero-img{width:100%;aspect-ratio:21/9;object-fit:cover;border-radius:var(--radius-lg);margin-bottom:var(--space-10);border:1px solid var(--border-subtle);display:block;filter:brightness(.88) saturate(1.1)}
 .app-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--space-4)}
 .app-card{background:var(--grey-1);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);overflow:hidden;display:flex;flex-direction:column}
 .app-card .app-stage{aspect-ratio:16/10;background:var(--color-black);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:var(--space-6)}
@@ -771,7 +779,7 @@ footer.site-foot .foot-meta{display:flex;gap:var(--space-6);color:var(--grey-6);
 </section>
 
 <!-- ========== TIPOGRAFIA ========== -->
-<section id="tipografia" class="section">
+<section id="tipografia" class="section section--pattern">
   <div class="container">
     <div class="divider reveal"><span class="divider__num">06</span><span class="divider__label">Tipografia</span><span class="divider__rule"></span></div>
     <h2 class="t-h1 sec-title reveal">Três Famílias,<br/>Um Sistema</h2>
@@ -949,6 +957,8 @@ footer.site-foot .foot-meta{display:flex;gap:var(--space-6);color:var(--grey-6);
     <h2 class="t-h1 sec-title reveal">A Marca<br/>em Movimento</h2>
     <p class="t-body-lg sec-lead reveal" data-delay="1">Exemplos dos principais pontos de contato. Cada aplicação segue as regras de cor, tipografia e voz definidas acima.</p>
 
+    <img src="imagens/analytics-desk.jpg" alt="Workspace de análise esportiva Super Previsão" class="app-hero-img reveal" data-delay="2" loading="lazy"/>
+
     <div class="app-grid">
       <div class="app-card big reveal">
         <div class="app-stage">
@@ -1042,7 +1052,7 @@ footer.site-foot .foot-meta{display:flex;gap:var(--space-6);color:var(--grey-6);
 </section>
 
 <!-- ========== REGRAS ========== -->
-<section id="regras" class="section">
+<section id="regras" class="section section--pattern">
   <div class="container">
     <div class="divider reveal"><span class="divider__num">11</span><span class="divider__label">Regras Rápidas</span><span class="divider__rule"></span></div>
     <h2 class="t-h1 sec-title reveal">Faça<br/>e Não Faça</h2>
